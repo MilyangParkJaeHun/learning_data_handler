@@ -8,13 +8,13 @@ def convert(input_image_dir, input_image_path, labeled_txt_path, origin_path, or
   exist = os.path.exists(origin_csv_file_path)
 
   with open(origin_csv_file_path, file_open_format) as f:
-    if exist == False:
+    if exist == False or file_open_format=="w":
       header = "filename,width,height,class,xmin,ymin,xmax,ymax\n"
       f.write(header)
 
     txt_list = os.listdir(labeled_txt_path)
     txt_list.sort()
-    progressbar = pb.Progressbar(len(txt_list), 'Progress:', 'Complete', 2, 50, 0.1)
+    progressbar = pb.Progressbar(len(txt_list), 'fiji to csv Progress:', 'Complete', 2, 50, 0.1)
 
     for txt_file in txt_list:
       progressbar.progress()

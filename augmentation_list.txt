@@ -1,0 +1,8 @@
+brightness:0
+blur:5
+motion_blur:0
+saturation:0
+sharpen:0
+flip:off
+gamma:0
+reduction:0
