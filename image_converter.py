@@ -26,9 +26,12 @@ def convert(progress_flag, data, input_image_dir, augmentation_list):
     converter = image_convert_functions.functions()
     for option in augmentation_list.keys():
       for value in augmentation_list[option]:
-        converted_image = converter[option](image, float(value) if option!="flip" else value)
-
         output_path = os.path.join(input_image_dir, image_path, option+str(value))
+
         chk_dir(output_path)
-        cv2.imwrite(os.path.join(output_path, image_name), converted_image)
-          
+        output_image = os.path.join(output_path, image_name)
+        if os.path.isfile(output_image):
+          continue
+
+        converted_image = converter[option](image, float(value) if option!="flip" else value)
+        cv2.imwrite(output_image, converted_image)

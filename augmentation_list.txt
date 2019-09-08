@@ -1,7 +1,7 @@
-brightness:0
+brightness:3
 blur:5
-motion_blur:0
-saturation:0
+motion_blur:5
+saturation:2
 sharpen:0
 flip:off
 gamma:0

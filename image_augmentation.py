@@ -27,8 +27,9 @@ def augmentation(input_image_dir, origin_path, origin_csv, augmentation_list):
         for value in augmentation_list[option]:
           image_name = bbox_info[0].split("/")[-1]
           image_path = bbox_info[0][:-len(image_name)-1]
-          bbox_info[0] = os.path.join(image_path,option+str(value),image_name)
-          converted_line = ",".join(bbox_info)+"\n"
+          now_info = bbox_info.copy()
+          now_info[0] = os.path.join(image_path,option+str(value),image_name)
+          converted_line = ",".join(now_info)+"\n"
           f.write(converted_line) 
 
   data_size = len(data)

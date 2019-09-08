@@ -41,8 +41,7 @@ def functions():
   def sharpen(img, val):
     val = int(val)
     kernel = [[-1*val/9,-1*val/9,-1*val/9], [-1*val/9,val,-1*val/9], [-1*val/9,-1*val/9,-1*val/9]]
-   # ret = cv2.filter2D(img, -1, kernel)
-    ret = None
+    ret = cv2.filter2D(img, -1, kernel)
     return ret
 
   def flip(img, val):
