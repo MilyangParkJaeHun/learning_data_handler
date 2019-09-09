@@ -40,9 +40,12 @@ def functions():
 
   def sharpen(img, val):
     val = int(val)
-    kernel = [[-1*val/9,-1*val/9,-1*val/9], [-1*val/9,val,-1*val/9], [-1*val/9,-1*val/9,-1*val/9]]
+    if val == 1:
+      kernel = np.array([[-1,-1,-1],[-1,9,-1],[-1,-1,-1]])
+    else:
+      kernel = np.array([[-1,-1,-1,-1,-1],[-1,2,2,2,-1],[-1,2,8,2,-1],[-1,2,2,2,-1],[-1,-1,-1,-1,-1]])/8.0
     ret = cv2.filter2D(img, -1, kernel)
-    return ret
+    return ret 
 
   def flip(img, val):
     ret = cv2.flip(img, 1)

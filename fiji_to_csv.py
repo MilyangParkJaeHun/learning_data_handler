@@ -18,8 +18,19 @@ def convert(input_image_dir, input_image_path, labeled_txt_path, origin_path, or
 
     for txt_file in txt_list:
       progressbar.progress()
-      image_name = txt_file.split('.')[0]+'.jpg'
-      image_file = os.path.join(input_image_dir, input_image_path, image_name)
+      jpg_image_name = txt_file.split('.')[0]+'.jpg'
+      jpg_image_file = os.path.join(input_image_dir, input_image_path, image_name)
+      
+      png_image_name = txt_file.split('.')[0]+'.png'
+      png_image_file = os.path.join(input_image_dir, input_image_path, image_name)
+      
+      if os.path.isfile(jpg_image_file):
+        image_file = jpg_image_file
+      elif os.path.isfile(png_image_file):
+        image_file = png_image_file
+      else:
+        print("Can not find image file")
+        return
       
       image = cv2.imread(image_file)
       width = image.shape[1]
