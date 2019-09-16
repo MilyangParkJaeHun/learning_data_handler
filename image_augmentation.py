@@ -4,7 +4,7 @@ import image_converter
 
 from multiprocessing import Process
 
-def augmentation(input_image_dir, origin_path, origin_csv, augmentation_list):
+def augmentation(input_image_dir, origin_path, origin_csv, augmentation_list, output_file):
   origin_data = os.path.join(origin_path, origin_csv)
   data = []
   with open(origin_data, "r") as f:
@@ -16,7 +16,7 @@ def augmentation(input_image_dir, origin_path, origin_csv, augmentation_list):
       line = line[:-1].split(",")
       data.append(line)
 
-  augmentation_csv_file = os.path.join(origin_path, "augmentation_"+origin_csv)
+  augmentation_csv_file = os.path.join(origin_path, output_file)
   header = "filename,width,height,class,xmin,ymin,xmax,ymax\n"
   with open(augmentation_csv_file, "w") as f:
     f.write(header)

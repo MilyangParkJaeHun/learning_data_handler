@@ -7,6 +7,7 @@ origin_csv="origin.csv"
 overwrite=0
 augmentation=1
 augmentation_list_file="/home/park/tensorflow/my_train/learning_data_handler/augmentation_list.txt"
+output_file="blur_augmentation.csv"
 
 python3 learning_data_generator.py \
   --input_image_dir ${input_image_dir} \
@@ -17,4 +18,5 @@ python3 learning_data_generator.py \
   --origin_csv ${origin_csv} \
   --overwrite ${overwrite} \
   --augmentation ${augmentation} \
-  --augmentation_list_file ${augmentation_list_file}
+  --augmentation_list_file ${augmentation_list_file} \
+  --output_file ${output_file}

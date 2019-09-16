@@ -13,9 +13,10 @@ parser.add_argument("--origin_csv", help="origin data csv file name")
 parser.add_argument("--overwrite", help="overwrite or not", type=int)
 parser.add_argument("--augmentation", help="do data augmentation or not", type=int)
 parser.add_argument("--augmentation_list_file", help="image augmentation list")
+parser.add_argument("--output_file", help="augmentation data output file name")
 args = parser.parse_args()
 
-def main(input_image_dir, input_image_path, labeled_txt_path, make_origin, origin_path, origin_csv, overwrite, augmentation, augmentation_list_file):
+def main(input_image_dir, input_image_path, labeled_txt_path, make_origin, origin_path, origin_csv, overwrite, augmentation, augmentation_list_file, output_file):
   file_open_format = "a" if overwrite==0 else "w"
 
   augmentation_list = {}
@@ -35,7 +36,7 @@ def main(input_image_dir, input_image_path, labeled_txt_path, make_origin, origi
   if make_origin == 1:
     fiji_to_csv.convert(input_image_dir, input_image_path, labeled_txt_path, origin_path, origin_csv, file_open_format)
   if augmentation == 1:
-    image_augmentation.augmentation(input_image_dir, origin_path, origin_csv, augmentation_list)
+    image_augmentation.augmentation(input_image_dir, origin_path, origin_csv, augmentation_list, output_file)
 
 if __name__ == '__main__':
-  main(args.input_image_dir, args.input_image_path, args.labeled_txt_path, args.make_origin, args.origin_path, args.origin_csv, args.overwrite, args.augmentation, args.augmentation_list_file)
+  main(args.input_image_dir, args.input_image_path, args.labeled_txt_path, args.make_origin, args.origin_path, args.origin_csv, args.overwrite, args.augmentation, args.augmentation_list_file, args.output_file)
